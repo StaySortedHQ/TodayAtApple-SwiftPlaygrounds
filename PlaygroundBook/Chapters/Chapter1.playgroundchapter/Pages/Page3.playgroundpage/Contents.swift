@@ -6,5 +6,4 @@
 //  The Swift file containing the source code edited by the user of this playground book.
 //
 //#-end-hidden-code
-
-import SwiftUI
+let str = "Hello, playground 3"
