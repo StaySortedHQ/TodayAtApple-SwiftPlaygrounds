@@ -6,9 +6,28 @@
 //  The Swift file containing the source code edited by the user of this playground book.
 //
 //#-end-hidden-code
+/*:
+ # Hello! We hope you’ve been enjoying the session so far. Now it’s time to start coding!
+ 
+ We're going to learn about building an iconic user interaction that is composed of dragging gesture and animations. We will learn about [SwiftUI](https://developer.apple.com/xcode/swiftui/) and [Swift Playgrounds](https://www.apple.com/swift/playgrounds/). You can learn more about these by tapping the links.
+ 
+ 
+ Let's start by trying our final demo.
+ 
+ * callout(Project Demo):
+ Tap `Run My Code` on the right. Then, swipe the image to the left or right and see what happens.
+ 
+ In the next steps we’ll start writing a few lines of code. We will break into steps. If you cannot follow, you can still go to the next page with a starting template.
+ Are you ready to start? Let's go to the **[next page](@next)**. 
+ */
+//#-code-completion(everything, hide)
 
 import SwiftUI
 import PlaygroundSupport
+
+// =========================
+// MARK: - Main Content View
+// =========================
 
 struct ContentView: View {
     @ObservedObject var store: FoodStore
@@ -48,6 +67,10 @@ struct ContentView: View {
         .onAppear(perform: store.fetch)
     }
 }
+
+// ==========================
+// MARK: - Swipable Card View
+// ==========================
 
 struct CardView: View {
     var image: String = "papaya_salad"
@@ -141,6 +164,10 @@ struct CardView: View {
             .animation(.spring())
     }
 }
+
+// ==================
+// MARK: - Data Store
+// ==================
 
 struct Food: Identifiable {
     let id = UUID()
