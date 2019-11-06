@@ -1,3 +1,5 @@
+# [<img src="https://raw.githubusercontent.com/StaySortedHQ/TodayAtApple-SwiftPlaygrounds/master/SporkIcon.png">](https://github.com/StaySortedHQ/TodayAtApple-SwiftPlaygrounds)
+
 # Today at Apple
 
 ## Create iconic interactions using SwiftUI on Swift Playgrounds
