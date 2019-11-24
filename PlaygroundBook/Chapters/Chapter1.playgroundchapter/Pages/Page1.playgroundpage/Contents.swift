@@ -24,7 +24,7 @@
  
  Then, we can add a rectangle above the text.
  
- When you've successfully got a **basic layou**, you can go to the **[next page](@next)**.
+ When you've successfully got a **basic layout**, you can go to the **[next page](@next)**.
  */
 
 import SwiftUI
@@ -34,6 +34,17 @@ struct ContentView: View {
     var body: some View {
         // 1.1) Start here to customize Text
         Text("Hello World!")
+        
+        // 1.2) Now uncomment the following code for a vertical layout
+        /*
+        VStack {
+            Rectangle()
+                .fill(Color.blue)
+                .cornerRadius(8)
+                .frame(width: 300, height: 300)
+            Text("Now you've added some elements")
+        }
+        */
     }
 }
 

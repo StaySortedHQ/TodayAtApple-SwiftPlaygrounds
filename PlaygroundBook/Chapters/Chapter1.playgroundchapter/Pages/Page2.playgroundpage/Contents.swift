@@ -7,7 +7,7 @@
 //
 //#-end-hidden-code
 /*:
- # Step 2: Start with the basics
+ # Step 2: Improve the code structure
  
  * callout(Task):
  Goal: Learn how to organize and reuse code.
@@ -19,7 +19,7 @@
  
  With organized code base, we can move the view easily.
  
- When you've successfully got a **basic layou**, you can go to the **[next page](@next)**.
+ When you've successfully got a **card layout**, you can go to the **[next page](@next)**.
  */
 
 import SwiftUI
@@ -40,8 +40,6 @@ struct ContentView: View {
                 .offset(y: 10)
                 
                 ZStack {
-                    // 2.1) Extract into `CardBackView`
-                    
                     VStack {
                         Image(systemName: "hourglass")
                             .font(Font.largeTitle.weight(.black))
@@ -52,12 +50,27 @@ struct ContentView: View {
                     }
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 600)
                     
-                    // 2.2) Extract into `CardView`
+                    // 2.1) Extract into `CardView`
+                    VStack {
+                        Rectangle()
+                            .fill(Color.blue)
+                            .cornerRadius(8)
+                            .frame(width: 300, height: 300)
+                        Text("Hello World!")
+                    }
                 }
             }
             
             Spacer()
         }
+    }
+}
+
+struct CardView: View {
+    var body: some View {
+        // 2.2) Remove this rectangle
+        Rectangle()
+        // 2.3) Paste the code below and customize the view.
     }
 }
 

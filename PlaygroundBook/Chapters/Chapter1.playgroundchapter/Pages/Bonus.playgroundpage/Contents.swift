@@ -7,25 +7,27 @@
 //
 //#-end-hidden-code
 /*:
- # Step 3: Add image to the view, then implement Gesture
+ # Bonus Step: Customize the images
  
  * callout(Task):
- Goal: Learn how to apply interactions.
+ Goal: Create your own cards with a list of names and images
  
- We'll use a drag gesture to implement the swiping to the left and right.
+ Now, take some pictures in the store to personalize your app.
  
  * callout(Task):
- You'll replace the rectangle with an image.
+ You'll take pictures in the store and include in this app.
  
- To make it more enjoyable, let's change the rectangle to an image.
+ ## Congratulations
  
- When you've successfully got a **drag gesture**, you can go to the **[next page](@next)**.
+ You've made some real changes. Welcome to our developer community!
  */
 
 import SwiftUI
 import PlaygroundSupport
 
 struct ContentView: View {
+    @ObservedObject var store: FoodStore
+    
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
@@ -50,17 +52,29 @@ struct ContentView: View {
                     }
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 600)
                     
-                    CardView()
+                    ForEach(store.foods) { food in
+                        CardView(image: food.image,
+                                 // photo: ,
+                                 food: food.name,
+                                 restaurant: food.restaurant)
+                    }
                 }
             }
             
             Spacer()
         }
+        .onAppear(perform: store.fetch)
     }
 }
 
+// ==========================
+// MARK: - Swipable Card View
+// ==========================
+
 struct CardView: View {
     var image: String = "papaya_salad"
+    // 5.1) Replace image name with `UIImage` object
+//    var photo: UIImage
     var food: String = "Papaya Salad"
     var restaurant: String = "Pun Pun Market"
     
@@ -69,10 +83,11 @@ struct CardView: View {
     var body: some View {
         ZStack(alignment: .leading) {
             Group {
-                // 3.1) Replace rectangle by image
-                Rectangle()
-                    .fill(Color.blue)
-                    .cornerRadius(8)
+                // 5.2) Show `UIImage` object
+                Image(image)
+                    .renderingMode(.original)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 600)
             .cornerRadius(10)
@@ -133,24 +148,70 @@ struct CardView: View {
         .cornerRadius(8)
         .shadow(radius: 8)
         .padding()
-        // 3.2) Add swipe gesture
-//        .rotationEffect(Angle(degrees: Double(offset.width / 10)))
-//        .offset(x: offset.width, y: offset.height)
-//        .gesture(
-//            DragGesture()
-//                .onChanged { self.offset = $0.translation }
-//                .onEnded {
-//                    if $0.translation.width < -100 {
-//                        self.offset = .init(width: -1000, height: 0)
-//                    } else if $0.translation.width > 100 {
-//                        self.offset = .init(width: 1000, height: 0)
-//                    } else {
-//                        self.offset = .zero
-//                    }
-//            }
-//        )
-//            .animation(.spring())
+        .rotationEffect(Angle(degrees: Double(offset.width / 10)))
+        .offset(x: offset.width, y: offset.height)
+        .gesture(
+            DragGesture()
+                .onChanged { self.offset = $0.translation }
+                .onEnded {
+                    if $0.translation.width < -100 {
+                        self.offset = .init(width: -1000, height: 0)
+                    } else if $0.translation.width > 100 {
+                        self.offset = .init(width: 1000, height: 0)
+                    } else {
+                        self.offset = .zero
+                    }
+            }
+        )
+            .animation(.spring())
     }
 }
 
-PlaygroundPage.current.setLiveView(ContentView())
+// ==================
+// MARK: - Data Store
+// ==================
+
+struct Food: Identifiable {
+    let id = UUID()
+    var image: String
+    // 5.3) Provide `UIImage` as part of the data model
+//    var photo: UIImage
+    var name: String
+    var restaurant: String
+}
+
+final class FoodStore: ObservableObject {
+    @Published var foods: [Food] = []
+    
+    func fetch() {
+        foods = [
+            // 5.4) Provide `UIImage` for each object
+            Food(image: "fruit_bowl",
+                 // photo: ,
+                 name: "Fruit Bowl",
+                 restaurant: "Pun Pun Market"),
+            Food(image: "papaya_salad",
+                 // photo: ,
+                 name: "Som Tum",
+                 restaurant: "Pun Pun Market"),
+            Food(image: "pencake",
+                 // photo: ,
+                 name: "Pencake",
+                 restaurant: "Pun Pun Market"),
+            Food(image: "mango_sticky_rice",
+                 // photo: ,
+                 name: "Mango Sticky Rice",
+                 restaurant: "Central Plaza Airport"),
+            Food(image: "pineapple_rice",
+                 // photo: ,
+                 name: "Pineapple Fried Rice",
+                 restaurant: "Cooking Love"),
+            Food(image: "thai_sausage",
+                 // photo: ,
+                 name: "Northern Thai Sausage",
+                 restaurant: "Saturday Night Market"),
+            ].shuffled()
+    }
+}
+
+PlaygroundPage.current.setLiveView(ContentView(store: FoodStore()))

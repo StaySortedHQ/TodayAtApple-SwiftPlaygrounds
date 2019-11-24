@@ -15,7 +15,7 @@
 	<key>MinimumSwiftPlaygroundsVersion</key>
 	<string>3.0</string>
 	<key>SwiftVersion</key>
-	<string>$(SWIFT_VERSION)</string>
+	<string>5.1.2</string>
 	<key>Name</key>
 	<string>PlaygroundBookName</string>
 	<key>ImageReference</key>

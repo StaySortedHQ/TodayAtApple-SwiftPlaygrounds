@@ -18,3 +18,5 @@ Contains English localizations of values in Manifest.plist files in the playgrou
 "ChapterOnePageTwoName" = "Step 2";
 "ChapterOnePageThreeName" = "Step 3";
 "ChapterOnePageFourName" = "Step 4";
+
+"Bonus" = "Bonus";
