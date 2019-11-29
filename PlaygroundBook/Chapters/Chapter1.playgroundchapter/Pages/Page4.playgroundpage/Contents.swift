@@ -55,7 +55,9 @@ struct ContentView: View {
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 600)
                     
                     // 4.1) Show multiple images using for-loop
+                    //#-editable-code
                     CardView()
+                    //#-end-editable-code
                 }
             }
             

@@ -70,9 +70,11 @@ struct CardView: View {
         ZStack(alignment: .leading) {
             Group {
                 // 3.1) Replace rectangle by image
+                //#-editable-code
                 Rectangle()
                     .fill(Color.blue)
                     .cornerRadius(8)
+                //#-end-editable-code
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 600)
             .cornerRadius(10)
@@ -134,6 +136,7 @@ struct CardView: View {
         .shadow(radius: 8)
         .padding()
         // 3.2) Uncomment the lines below to add swipe gesture
+        //#-editable-code
         /*
         .rotationEffect(Angle(degrees: Double(offset.width / 10)))
         .offset(x: offset.width, y: offset.height)
@@ -152,6 +155,7 @@ struct CardView: View {
         )
             .animation(.spring())
         */
+        //#-end-editable-code
     }
 }
 

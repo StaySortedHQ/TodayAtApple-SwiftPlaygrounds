@@ -51,6 +51,7 @@ struct ContentView: View {
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 600)
                     
                     // 2.1) Extract into `CardView`
+                    //#-editable-code
                     VStack {
                         Rectangle()
                             .fill(Color.blue)
@@ -58,6 +59,7 @@ struct ContentView: View {
                             .frame(width: 300, height: 300)
                         Text("Hello World!")
                     }
+                    //#-end-editable-code
                 }
             }
             
@@ -68,9 +70,13 @@ struct ContentView: View {
 
 struct CardView: View {
     var body: some View {
-        // 2.2) Remove this rectangle
+        // 2.2) First remove the rectangle
+        //#-editable-code
         Rectangle()
+        //#-end-editable-code
         // 2.3) Paste the code below and customize the view.
+        //#-editable-code
+        //#-end-editable-code
     }
 }
 

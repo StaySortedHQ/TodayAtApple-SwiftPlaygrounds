@@ -33,18 +33,24 @@ import PlaygroundSupport
 struct ContentView: View {
     var body: some View {
         // 1.1) Start here to customize Text
+        //#-editable-code
         Text("Hello World!")
+        //#-end-editable-code
         
         // 1.2) Now uncomment the following code for a vertical layout
+        //#-editable-code
         /*
+        //#-end-editable-code
         VStack {
             Rectangle()
-                .fill(Color.blue)
-                .cornerRadius(8)
-                .frame(width: 300, height: 300)
+                .fill(/*#-editable-code color*/Color.blue/*#-end-editable-code*/)
+                .cornerRadius(/*#-editable-code points*/8/*#-end-editable-code*/)
+                .frame(width: /*#-editable-code points*/300/*#-end-editable-code*/, height: /*#-editable-code points*/300/*#-end-editable-code*/)
             Text("Now you've added some elements")
         }
+        //#-editable-code
         */
+        //#-end-editable-code
     }
 }
 

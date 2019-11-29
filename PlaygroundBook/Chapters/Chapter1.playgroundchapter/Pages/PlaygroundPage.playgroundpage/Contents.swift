@@ -39,18 +39,18 @@ struct ContentView: View {
                     Image("Spork")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .frame(width: 120)
+                        .frame(width: /*#-editable-code points*/120/*#-end-editable-code*/)
                 }
-                .foregroundColor(.black)
-                .shadow(radius: 8)
-                .offset(y: 10)
+                .foregroundColor(/*#-editable-code color*/.black/*#-end-editable-code*/)
+                .shadow(radius: /*#-editable-code points*/8/*#-end-editable-code*/)
+                .offset(y: /*#-editable-code points*/10/*#-end-editable-code*/)
                 
                 ZStack {
                     VStack {
                         Image(systemName: "hourglass")
                             .font(Font.largeTitle.weight(.black))
 
-                        Text("Tasting more food...")
+                        Text(/*#-editable-code Text*/"Tasting more food..."/*#-end-editable-code*/)
                             .font(.title)
                             .fontWeight(.bold)
                     }
@@ -88,7 +88,7 @@ struct CardView: View {
                     .aspectRatio(contentMode: .fill)
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 600)
-            .cornerRadius(10)
+            .cornerRadius(/*#-editable-code points*/10/*#-end-editable-code*/)
             
             VStack(alignment: .leading) {
                 Spacer()
@@ -108,32 +108,32 @@ struct CardView: View {
             
             VStack {
                 HStack {
-                    Text("LIKE")
+                    Text(/*#-editable-code Text*/"LIKE"/*#-end-editable-code*/)
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                        .foregroundColor(.green)
+                        .foregroundColor(/*#-editable-code color*/.green/*#-end-editable-code*/)
                         .padding(4)
                         .overlay(
                             RoundedRectangle(cornerRadius: 10)
                                 .stroke(Color.green, lineWidth: 2)
                                 .frame(width: 100)
                     )
-                        .rotationEffect(Angle(degrees: -15))
+                        .rotationEffect(Angle(degrees: /*#-editable-code points*/-15/*#-end-editable-code*/))
                         .opacity(Double(self.offset.width / 50))
                     
                     Spacer()
                     
-                    Text("NOPE")
+                    Text(/*#-editable-code Text*/"NOPE"/*#-end-editable-code*/)
                         .font(.largeTitle)
                         .fontWeight(.bold)
-                        .foregroundColor(.red)
+                        .foregroundColor(/*#-editable-code color*/.red/*#-end-editable-code*/)
                         .padding(4)
                         .overlay(
                             RoundedRectangle(cornerRadius: 10)
                                 .stroke(Color.red, lineWidth: 2)
                                 .frame(width: 120)
                     )
-                        .rotationEffect(Angle(degrees: 15))
+                        .rotationEffect(Angle(degrees: /*#-editable-code points*/15/*#-end-editable-code*/))
                         .opacity(Double(self.offset.width / -50))
                 }
                 .padding(.horizontal, 28)
@@ -143,8 +143,8 @@ struct CardView: View {
             .padding(.top, 28)
             .frame(height: 600)
         }
-        .cornerRadius(8)
-        .shadow(radius: 8)
+        .cornerRadius(/*#-editable-code points*/8/*#-end-editable-code*/)
+        .shadow(radius: /*#-editable-code points*/8/*#-end-editable-code*/)
         .padding()
         .rotationEffect(Angle(degrees: Double(offset.width / 10)))
         .offset(x: offset.width, y: offset.height)
