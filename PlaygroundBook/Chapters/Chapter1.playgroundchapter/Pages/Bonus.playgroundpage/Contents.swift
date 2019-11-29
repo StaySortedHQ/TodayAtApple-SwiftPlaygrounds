@@ -26,7 +26,7 @@ import SwiftUI
 import PlaygroundSupport
 
 struct ContentView: View {
-    @ObservedObject var store: FoodStore
+    @ObservedObject var store: ProductStore
     
     var body: some View {
         ZStack {
@@ -46,17 +46,17 @@ struct ContentView: View {
                         Image(systemName: "hourglass")
                             .font(Font.largeTitle.weight(.black))
                         
-                        Text("Tasting more food...")
+                        Text("Checking out more products...")
                             .font(.title)
                             .fontWeight(.bold)
                     }
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 600)
                     
-                    ForEach(store.foods) { food in
-                        CardView(image: food.image,
-                                 // photo: ,
-                                 food: food.name,
-                                 restaurant: food.restaurant)
+                    ForEach(store.products) { product in
+                        CardView(
+                                 // photo: product.photo,
+                                 name: product.name,
+                                 location: product.restaurant)
                     }
                 }
             }
@@ -72,11 +72,10 @@ struct ContentView: View {
 // ==========================
 
 struct CardView: View {
-    var image: String = "papaya_salad"
     // 5.1) Replace image name with `UIImage` object
 //    var photo: UIImage
-    var food: String = "Papaya Salad"
-    var restaurant: String = "Pun Pun Market"
+    var name: String = "Video Wall"
+    var location: String = "Causeway Bay"
     
     @State var offset = CGSize.zero
     
@@ -84,10 +83,14 @@ struct CardView: View {
         ZStack(alignment: .leading) {
             Group {
                 // 5.2) Show `UIImage` object
-                Image(image)
+                Rectangle()
+                    .fill(Color.white)
+                /*
+                Image(uiImage: photo)
                     .renderingMode(.original)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
+                */
             }
             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 600)
             .cornerRadius(10)
@@ -95,14 +98,14 @@ struct CardView: View {
             VStack(alignment: .leading) {
                 Spacer()
                 
-                Text(food)
+                Text(name)
                     .font(.largeTitle)
                     .fontWeight(.heavy)
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                 
-                Text(restaurant)
+                Text(location)
                     .font(.body)
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
             }
             .frame(height: 600)
             .padding()
@@ -171,47 +174,48 @@ struct CardView: View {
 // MARK: - Data Store
 // ==================
 
-struct Food: Identifiable {
+struct Product: Identifiable {
     let id = UUID()
-    var image: String
     // 5.3) Provide `UIImage` as part of the data model
 //    var photo: UIImage
     var name: String
     var restaurant: String
 }
 
-final class FoodStore: ObservableObject {
-    @Published var foods: [Food] = []
+final class ProductStore: ObservableObject {
+    @Published var products: [Product] = []
     
     func fetch() {
-        foods = [
+        products = [
             // 5.4) Provide `UIImage` for each object
-            Food(image: "fruit_bowl",
+            Product(
                  // photo: ,
-                 name: "Fruit Bowl",
-                 restaurant: "Pun Pun Market"),
-            Food(image: "papaya_salad",
+                 name: "Video Wall",
+                 restaurant: "Causeway Bay"),
+            Product(
                  // photo: ,
-                 name: "Som Tum",
-                 restaurant: "Pun Pun Market"),
-            Food(image: "pencake",
+                 name: "Logo",
+                 restaurant: "IFC"),
+            Product(
                  // photo: ,
-                 name: "Pencake",
-                 restaurant: "Pun Pun Market"),
-            Food(image: "mango_sticky_rice",
+                 name: "Entrance",
+                 restaurant: "Festival Walk"),
+            Product(
                  // photo: ,
-                 name: "Mango Sticky Rice",
-                 restaurant: "Central Plaza Airport"),
-            Food(image: "pineapple_rice",
+                 name: "Table",
+                 restaurant: "APM"),
+            Product(
                  // photo: ,
-                 name: "Pineapple Fried Rice",
-                 restaurant: "Cooking Love"),
-            Food(image: "thai_sausage",
+                 name: "Railway",
+                 restaurant: "Shatin"),
+            Product(
                  // photo: ,
-                 name: "Northern Thai Sausage",
-                 restaurant: "Saturday Night Market"),
-            ].shuffled()
+                 name: "Mega Store",
+                 restaurant: "Macau"),
+            ]
+        // Uncomment the next line for more fun
+//            .shuffled()
     }
 }
 
-PlaygroundPage.current.setLiveView(ContentView(store: FoodStore()))
+PlaygroundPage.current.setLiveView(ContentView(store: ProductStore()))

@@ -133,23 +133,25 @@ struct CardView: View {
         .cornerRadius(8)
         .shadow(radius: 8)
         .padding()
-        // 3.2) Add swipe gesture
-//        .rotationEffect(Angle(degrees: Double(offset.width / 10)))
-//        .offset(x: offset.width, y: offset.height)
-//        .gesture(
-//            DragGesture()
-//                .onChanged { self.offset = $0.translation }
-//                .onEnded {
-//                    if $0.translation.width < -100 {
-//                        self.offset = .init(width: -1000, height: 0)
-//                    } else if $0.translation.width > 100 {
-//                        self.offset = .init(width: 1000, height: 0)
-//                    } else {
-//                        self.offset = .zero
-//                    }
-//            }
-//        )
-//            .animation(.spring())
+        // 3.2) Uncomment the lines below to add swipe gesture
+        /*
+        .rotationEffect(Angle(degrees: Double(offset.width / 10)))
+        .offset(x: offset.width, y: offset.height)
+        .gesture(
+            DragGesture()
+                .onChanged { self.offset = $0.translation }
+                .onEnded {
+                    if $0.translation.width < -100 {
+                        self.offset = .init(width: -1000, height: 0)
+                    } else if $0.translation.width > 100 {
+                        self.offset = .init(width: 1000, height: 0)
+                    } else {
+                        self.offset = .zero
+                    }
+            }
+        )
+            .animation(.spring())
+        */
     }
 }
 
