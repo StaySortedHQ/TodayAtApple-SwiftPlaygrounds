@@ -56,7 +56,7 @@ struct ContentView: View {
                         CardView(
                                  // photo: product.photo,
                                  name: product.name,
-                                 location: product.restaurant)
+                                 location: product.location)
                     }
                 }
             }
@@ -179,7 +179,7 @@ struct Product: Identifiable {
     // 5.3) Provide `UIImage` as part of the data model
 //    var photo: UIImage
     var name: String
-    var restaurant: String
+    var location: String
 }
 
 final class ProductStore: ObservableObject {
@@ -191,27 +191,23 @@ final class ProductStore: ObservableObject {
             Product(
                  // photo: ,
                  name: "Video Wall",
-                 restaurant: "Causeway Bay"),
+                 location: "Causeway Bay"),
             Product(
                  // photo: ,
                  name: "Logo",
-                 restaurant: "IFC"),
+                 location: "IFC"),
             Product(
                  // photo: ,
                  name: "Entrance",
-                 restaurant: "Festival Walk"),
+                 location: "Festival Walk"),
             Product(
                  // photo: ,
                  name: "Table",
-                 restaurant: "APM"),
+                 location: "APM"),
             Product(
                  // photo: ,
                  name: "Railway",
-                 restaurant: "Shatin"),
-            Product(
-                 // photo: ,
-                 name: "Mega Store",
-                 restaurant: "Macau"),
+                 location: "Shatin"),
             ]
         // Uncomment the next line for more fun
 //            .shuffled()
